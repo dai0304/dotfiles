@@ -85,7 +85,10 @@ PROMPT='$(git_custom_status)%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%
 
 # anyenv configuration
 # https://github.com/riywo/anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+if [ -d $HOME/.anyenv ] ; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+fi
 
 # ?
+source ~/.common_env
