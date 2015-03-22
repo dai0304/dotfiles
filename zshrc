@@ -80,7 +80,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # oh-my-zsh theme customization
-RPS1='$EPS1'
+RPS1='$EPS1%D{%m/%d %T}'
 PROMPT='$(git_custom_status)%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 
 # anyenv configuration
