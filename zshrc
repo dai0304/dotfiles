@@ -45,7 +45,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx common-aliases sudo web-search brew pip git gitfast git-prompt git-flow git-extras gradle mvn encode64 urltools vagrant docker sublime)
+plugins=(osx common-aliases sudo brew brew-cask git gitfast git-prompt git-flow git-extras gitignore gradle mvn aws encode64 urltools docker boot2docker sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,8 +80,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # oh-my-zsh theme customization
-RPS1='$EPS1%D{%m/%d %T}'
-PROMPT='$(git_custom_status)%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+PS1='$(git_custom_status)%{$fg[cyan]%}[%D{%m/%d %T}]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+RPS1='%{$fg[cyan]%}[%~% ]%{$reset_color%} $EPS1'
+setopt transient_rprompt
 
 # anyenv configuration
 # https://github.com/riywo/anyenv
