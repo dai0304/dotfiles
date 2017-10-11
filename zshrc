@@ -45,7 +45,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx common-aliases sudo brew brew-cask git gitfast git-prompt git-flow git-extras gitignore gradle mvn aws encode64 urltools docker boot2docker sublime)
+plugins=(osx common-aliases brew brew-cask git gitfast git-prompt git-flow sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,7 +80,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # oh-my-zsh theme customization
-PS1='$(git_custom_status)%{$fg[cyan]%}[%D{%m/%d %T}]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+PS1='$(git_custom_status)%{$fg[cyan]%}[%D{%m/%d %T} %{$fg[yellow]%}%1~%{$reset_color%}]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
 RPS1='%{$fg[cyan]%}[%~% ]%{$reset_color%} $EPS1'
 setopt transient_rprompt
 
@@ -93,3 +93,19 @@ fi
 
 # ?
 source ~/.common_env
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+zshaddhistory() {
+    local line=${1%%$'\n'}
+    local cmd=${line%% *}
+
+    # 以下の条件をすべて満たすものだけをヒストリに追加する
+    [[ ${#line} -ge 5
+        && ${cmd} != (l|l[sal])
+        && ${cmd} != cd
+        && ${cmd} != man
+        && ${cmd} != gst
+        && ${cmd} != g[abcd]
+    ]]
+}
